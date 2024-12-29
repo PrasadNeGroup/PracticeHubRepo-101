@@ -24,10 +24,23 @@ fun saveStake(stake: Stake): CommonResponse<Stake> {
         )
     }
 }
+
 data class CommonResponse<T>(
     val success: Boolean,
     val message: String,
     val data: T?
 )
+
+val stake = Stake(id = 1, name = "Test Stake", value = 100)
+val response = saveStake(stake)
+
+println(response.message)
+if (response.success) {
+    println("Saved Stake: ${response.data}")
+} else {
+    println("Error: ${response.message}")
+}
+
+
 
 
